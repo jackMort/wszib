@@ -12,4 +12,3 @@ foreach my $word ( sort { $WORDS{$b} <=> $WORDS{$a} } keys %WORDS) {
 		exit;
 	}
 }
-# vim: fdm=marker ts=4 sw=4 sts=4

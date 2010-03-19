@@ -15,5 +15,4 @@
 	  if( ++$i == 20 )
 	  return;
    }
-   // vim: fdm=marker ts=4 sw=4 sts=4
 ?>
