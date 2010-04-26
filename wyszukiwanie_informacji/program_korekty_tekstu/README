@@ -1,0 +1,58 @@
+*README*
+
+			--------------------------------
+			PROGRAM KOREKTY TEKSTU POLSKIEGO
+			--------------------------------
+
+Autor:  Lech Twaróg { lech.twarog@gmail.com }
+
+==============================================================================
+1. Zawartość
+
+	1. Zawartość
+	2. Opis działania
+	3. Uruchomienie
+	4. Propozycje przyspieszenia działania oraz zmniejszenia zajętości 
+	   pamięci
+
+
+==============================================================================
+2. Opis działania
+
+		Program przy uruchomieniu wczytuje słownik form do pamięci. 
+	Następnie czyta plik wejściowy, dzieląc go na tokeny. 
+		
+		Jeżeli dany token jest słowem ( [a-źA-Ż]+ ), następuje 
+	sprawdzenie czy występuje w słowniku, jeżeli nie zostaje wygenerowana 
+	lista podpowiedzi na podstawie algorytmu odległości edycyjnej ( <= 2 ). 
+	Użytkownik wybiera odpowiedni wyraz lub ignoruje błąd. 
+		
+		Do tablicy wynikowej trafiają tokeny nie będące słowani, słowa 
+	prawidłowe i wyrazy zmienione, by na końcu zapisać je do pliku
+	wynikowego
+
+		Początkowo pisząc ten program próbowałem dla każdego błędnego słowa w
+	pliku wejściowym sprawdzać odległość edycyjną do wszystkich słów w słowniku.
+	Program działał wieki ... Poszperałem po sieci, przerobiłem setki testów aż
+	znalazłem metodę przyspieszenia programu kilkunastu krotnie przez odwrócenie 
+	logiki. Obecnie dla błędnego słowa generuję wszystkie możliwe "wyrazy"
+	( łącznie z tymi nie istniejącymi ) z odległością edycyjną mniejszą niż 2
+	następnie nakładam je na słownik i część wspólna jest listą podpowiedzi.
+
+
+==============================================================================
+3. Uruchomienie
+	./main.py plik1 plik2
+	
+	plik1 - plik do sprawdzenia poprawności
+	plik2 - plik wyjściowy w którym zostanie zapisany poprawiony tekst
+
+==============================================================================
+4. Propozycje przyspieszenia działania oraz zmniejszenia zajętości pamięci
+	
+	* W celu zmniejszenia zajętośći pamięci można by nie zapisywać każdego
+	  wyrazu słownika w tablicy tylko stworzyć słownik:
+		korpus słowa -> tablica końcówek
+	
+
+vim:tw=78:ts=8:ft=help:fdm=marker
